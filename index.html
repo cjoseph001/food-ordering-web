@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOODDASH | Home Page</title>
+
+    <!-- External Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Gabarito:wght@600&family=Nunito:wght@600&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Internal Styles -->
+    <style>
+        .top-image {
+            transition: opacity 0.4s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <header>
+            <div class="header-content">
+                <h1 class="header-title">FoodDash</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="mycart.php">My Cart</a></li>
+                        <li><a href="checklogin.php">My Account</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="top">
+            <div class="slider-container">
+                <a id="top-image-link" href="items/burger.html">
+                    <img src="images/burger.jpg" alt="Steak Burger" class="top-image">
+                </a>
+                <button class="prev-arrow" onclick="prevSlide()">&#9664;</button>
+                <button class="next-arrow" onclick="nextSlide()">&#9654;</button>
+            </div>
+            <div class="image-text">
+                <a href="items/burger.html">Special Menu of the Day!</a>
+            </div>
+        </div>
+
+        <div class="bottom">
+            <div class="bottom-images">
+                <div class="bottom-image">
+                    <a href="items/soup.html">
+                        <img src="images/mushroom_soup.jpg" alt="Mushroom Soup">
+                    </a>
+                </div>
+                <div class="bottom-image">
+                    <a href="items/tea.html">
+                        <img src="images/iced_tea.jpg" alt="Iced Tea">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Contact Us Here!</p>
+            <ul class="social-icons">
+                <li><a href="https://www.instagram.com/chris281502" target="_blank"><img src="images/instas.png" alt="Instagram"></a></li>
+                <li><a href="https://twitter.com/your-twitter-profile" target="_blank"><img src="images/twitts.png" alt="Twitter"></a></li>
+                <li><a href="mailto:cjoseph001@e.ntu.edu.sg"><img src="images/mails.png" alt="Email"></a></li>
+            </ul>
+            <p>Copyright &copy; FOODDASH 2023</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for Slider -->
+    <script>
+        let currentIndex = 0;
+        const images = [
+            { src: "images/burger.jpg", link: "items/burger.html" },
+            { src: "images/chicken2.jpg", link: "items/chickenburger.html" },
+            { src: "images/f2.jpg", link: "items/fishandchips.html" },
+        ];
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateSlider();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            const topImage = document.querySelector(".top-image");
+            const topImageLink = document.getElementById("top-image-link");
+            topImage.style.opacity = 0;
+            setTimeout(() => {
+                topImage.src = images[currentIndex].src;
+                topImage.alt = images[currentIndex].alt; // Update alt attribute if needed
+                topImageLink.href = images[currentIndex].link;
+                topImage.style.opacity = 1;
+            }, 400); // Reduced timeout for smoother transition
+        }
+
+        const topImage = document.querySelector(".top-image");
+        topImage.addEventListener("mouseenter", () => {
+            topImage.classList.add("darken-on-hover");
+        });
+        topImage.addEventListener("mouseleave", () => {
+            topImage.classList.remove("darken-on-hover");
+        });
+
+        window.onload = function () {
+            setInterval(nextSlide, 8000);
+        };
+    </script>
+</body>
+
+</html>

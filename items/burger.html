@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="UTF-8">
+    
+    <title>FOODDASH | Menu Page</title>
+    
+    <!--Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Gabarito:wght@600&family=Nunito:wght@600&display=swap" rel="stylesheet">
+    
+    <!--CSS Files-->
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../product_style.css">
+</head>
+    
+<body>
+    <div class="content">
+        <header>
+            <div class="header-content">
+                <h1 class="header-title">FoodDash</h1>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../menu.html">Menu</a></li>
+                        <li><a href="../mycart.php">My Cart</a></li>
+                        <li><a href="../checklogin.php">My Account</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+<div class="page-title">MENU</div>
+<div class="menu">
+  <div class="categories">
+    <ul>
+        <li><a href="../menu.html">Full Menu</a></li>
+      <li><a href="../starters.html">Starters</a></li>
+      <li><a href="../mains.html">Mains</a></li>
+      <li><a href="../beverages.html">Beverages</a></li>
+      <li><a href="../desserts.html">Desserts</a></li>
+    </ul>
+  </div>
+   <div class="menu-box">
+    
+    <div class="item-box">
+        <div id="mains">
+        Special Beef Burger <div class="price_style">Price : $14.99</div>
+    </div>
+        <img src="../images/burger2.jpg" alt="Chicken Burger" style="width: 50%; height: auto;">
+        <p class="item_description">Savor the mouthwatering Beef Burger, where a seasoned beef patty meets the freshness of lettuce, pickles, onions, and ripe tomatoes. Each bite is a symphony of flavors and textures, offering a satisfying and savory experience for burger enthusiasts. Indulge in the perfect harmony of this classic burger combination.</p>
+        <form action="add_to_cart.php" method="POST">
+		
+                        <input type="hidden" name="product" value="Special Beef Burger">
+                       <input type="number" class="quantity" name="quantity" id="quantity" value="1" min="1" step="1" oninput="calculateburger()" onkeydown="return false;">
+                        <p class="price" id="subtotal">Subtotal: $14.99</p>
+                        <input type="hidden" name="cost" value="14.99">
+                        <button class="add-to-cart2" type="submit">Add to Cart</button>
+        </form>
+    </div>
+</div>
+</div>       
+    <footer>
+        <p><a>Contact Us Here!</a></p>
+        <ul class="social-icons">
+            <li><a href="https://www.instagram.com/chris281502" target="_blank"><img src="../images/instas.png" alt="Instagram"></a></li>
+            <li><a href="https://twitter.com/your-twitter-profile" target="_blank"><img src="../images/twitts.png" alt="Twitter"></a></li>
+            <li><a href="cjoseph001@e.ntu.edu.sg"><img src="../images/mails.png" alt="Email"></a></li>
+        </ul>
+        <p>Copyright&copy; FOODDASH 2023</p>
+    </footer>
+         </div>
+    <script>
+function calculateburger() {
+    var quantityInput = document.getElementById("quantity");
+    var subtotal = document.getElementById("subtotal");
+    var quantity = parseInt(quantityInput.value);
+    var price = 14.99; 
+    var totalPrice = price * quantity;
+    subtotal.textContent = "Subtotal: $" + totalPrice.toFixed(2); 
+}
+</script>
+    
+</body>
+</html>
